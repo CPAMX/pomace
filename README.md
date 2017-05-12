@@ -1,5 +1,9 @@
 # Pomace
 
+The engine of the torrent tracker, written on Elixir/Phoenix
+
+## Coming soon...
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

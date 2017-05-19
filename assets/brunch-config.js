@@ -2,26 +2,22 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
-
-      // To use a separate vendor.js bundle, specify two files path
-      // https://github.com/brunch/brunch/blob/master/docs/config.md#files
-      // joinTo: {
-      //  "js/app.js": /^(js)/,
-      //  "js/vendor.js": /^(vendor)|(deps)/
-      // }
-      //
-      // To change the order of concatenation of files, explicitly mention here
-      // https://github.com/brunch/brunch/tree/master/docs#concatenation
-      // order: {
-      //   before: [
-      //     "vendor/js/jquery-2.1.1.js",
-      //     "vendor/js/bootstrap.min.js"
-      //   ]
-      // }
+      joinTo: {
+        "js/app.js": /^(js)|(node_modules)/,
+        "js/ex_admin_common.js": ["vendor/ex_admin_common.js"],
+        "js/admin_lte2.js": ["vendor/admin_lte2.js"],
+        "js/jquery.min.js": ["vendor/jquery.min.js"],
+      }
     },
     stylesheets: {
-      joinTo: "css/app.css"
+      joinTo: {
+        "css/app.css": /^(css|sass)/,
+        "css/admin_lte2.css": ["vendor/admin_lte2.css"],
+        "css/active_admin.css.css": ["vendor/active_admin.css.css"],
+      },
+      order: {
+        after: ["css/app.css"] // concat app.css last
+      }
     },
     templates: {
       joinTo: "js/app.js"
@@ -38,7 +34,7 @@ exports.config = {
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
-    watched: ["static", "css", "js", "vendor"],
+    watched: ["static", "css", "sass", "js", "vendor"],
     // Where to compile files to
     public: "../priv/static"
   },
@@ -48,6 +44,17 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
+    },
+
+    sass: {
+      mode: "native",
+      options: {
+        includePaths: [
+          "sass",
+        ],
+
+        outputStyle: 'compressed'
+      },
     }
   },
 

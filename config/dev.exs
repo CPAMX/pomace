@@ -37,7 +37,7 @@ config :pomace, Pomace.Web.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/pomace/web/views/.*(ex)$},
-      ~r{lib/pomace/web/templates/.*(eex)$}
+      ~r{lib/pomace/web/templates/.*(eex|haml)$}
     ]
   ]
 

@@ -14,8 +14,12 @@ config :pomace, Pomace.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "JzcMnfAAaP6sCrIW7nmTmECzFV4oAHA3a5Fgz543ON5QodH9mzetydrxAQISJ2p2",
   render_errors: [view: Pomace.Web.ErrorView, accepts: ~w(html json)],
+  # haml: PhoenixHaml.Engine,
   pubsub: [name: Pomace.PubSub,
            adapter: Phoenix.PubSub.PG2]      
+
+config :phoenix, :template_engines,
+  haml: PhoenixHaml.Engine
 
 # Configures Elixir's Logger
 config :logger, :console,
